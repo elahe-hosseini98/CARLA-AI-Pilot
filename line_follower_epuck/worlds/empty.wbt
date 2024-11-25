@@ -1,16 +1,70 @@
 #VRML_SIM R2023b utf8
+
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "../protos/TrackOne.proto"
+
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.5773 0.5773 0.5773 2.0944
-  position 0 0 10
+  orientation 0.24658853774016795 -0.28758455815786677 -0.9254670253252194 4.788642522273834
+  position -0.6739106190955995 -1.7091322269753144 0.7744131117476772
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
+  floorSize 2 2
+  floorAppearance PBRAppearance {
+    roughness 1
+    roughnessMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/parquetry/chequered_parquetry_roughness.jpg"
+      ]
+    }
+    metalness 0
+    normalMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/parquetry/chequered_parquetry_normal.jpg"
+      ]
+    }
+    occlusionMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/textures/parquetry/chequered_parquetry_occlusion.jpg"
+      ]
+    }
+  }
+}
+E-puck {
+  hidden position_0_0 325.23372530962945
+  hidden position_0_1 374.39222585538204
+  hidden linearVelocity_0 -0.1256873519777306 -0.0013599268741659677 1.4688469539628059e-05
+  hidden angularVelocity_0 6.83229037891407e-05 -0.006313471416282645 1.2501806748933158e-09
+  hidden rotation_1 0 -1 0 1.4919106637090478
+  hidden linearVelocity_1 -0.1257189179267855 -0.0013602679406418856 1.4674692651251234e-05
+  hidden angularVelocity_1 0.06801330640426195 -6.285945903267716 9.621611413732063e-08
+  hidden rotation_2 0 -1 0 2.5988925753931515
+  hidden linearVelocity_2 -0.12571891845563776 -0.0013602681649088147 1.4675278534018935e-05
+  hidden angularVelocity_2 0.06801349871432223 -6.285945901208173 -9.501911553513877e-08
+  translation -0.0028432836828069844 -0.27574259832320247 -6.58356718879656e-05
+  rotation -0.00030603761795717745 -1.6551645685349568e-06 0.9999999531691172 -3.1307731636371217
+  controller "epuck_line_follower_controller"
+  groundSensorsSlot [
+    DistanceSensor {
+      translation 0 0.02 0
+      name "ir1"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 -0.01 0
+      name "ir0"
+      type "infra-red"
+    }
+  ]
+}
+TrackOne {
+  translation 0 0 0.01
 }
