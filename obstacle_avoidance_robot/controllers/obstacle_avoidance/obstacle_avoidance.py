@@ -25,7 +25,7 @@ def enable_camera(robot: Robot, timestep: int):
 def detect_obstacles_by_sensors(ps_list, max_speed: float, distance_threshold: float=100.0):
     ps_values = [sensor.getValue() for sensor in ps_list]
     
-    print(ps_values)
+    print(ps_values) # these get higher as the robot gets closer to an obstacle
 
     right_obstacle = ps_values[0] > distance_threshold or ps_values[1] > distance_threshold or ps_values[2] > distance_threshold
     left_obstacle = ps_values[5] > distance_threshold or ps_values[6] > distance_threshold or ps_values[7] > distance_threshold
@@ -40,20 +40,19 @@ def detect_obstacles_by_sensors(ps_list, max_speed: float, distance_threshold: f
         return max_speed, max_speed
 
 
-
 def detect_obstacles_by_camera(camera_device):
     pass
 
 
-def start_engine(robot: Robot, left_velocity: float, right_velocity: float):
+def start_engine(robot: Robot):
     left_motor = robot.getDevice('left wheel motor')
     right_motor = robot.getDevice('right wheel motor')
 
     left_motor.setPosition(float('inf'))
     right_motor.setPosition(float('inf'))
 
-    left_motor.setVelocity(left_velocity)
-    right_motor.setVelocity(right_velocity)
+    left_motor.setVelocity(0.0)
+    right_motor.setVelocity(0.0)
 
     return left_motor, right_motor
 
@@ -66,7 +65,7 @@ if __name__ == '__main__':
 
     max_speed = 6.28
 
-    left_motor, right_motor = start_engine(epuck, left_velocity=0.0, right_velocity=0.0)
+    left_motor, right_motor = start_engine(epuck)
 
     ps_list = enable_sensors(epuck, timestep)
     camera = enable_camera(epuck, timestep)
