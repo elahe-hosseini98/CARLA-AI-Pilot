@@ -1,0 +1,46 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/samples/robotbenchmark/wall_following/protos/LinkedWalls.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+  info [
+    "The Pioneer Robot has to follow the wall."
+  ]
+  title "Wall Following"
+  window "wall_following"
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation 0.12422324359148729 -0.5507793696940361 -0.8253548762023828 5.508732769266357
+  position -16.67341984489542 -21.71864074057499 13.852110406718852
+}
+TexturedBackgroundLight {
+}
+TexturedBackground {
+}
+RectangleArena {
+  translation 8.09 -16 0
+  floorSize 10 36
+  wallHeight 0.5
+}
+DEF WALL LinkedWalls {
+  translation 5 0 0.25
+  rotation 0 0 1 3.14157
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 2 1
+    }
+  }
+}
+E-puck {
+  translation 4.21405 0.330426 -3.19456e-05
+  rotation 0.0012509330234383447 6.8349e-06 0.9999992175594846 0
+  controller "wall_following"
+}

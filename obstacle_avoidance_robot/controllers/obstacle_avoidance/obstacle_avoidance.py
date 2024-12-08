@@ -1,6 +1,7 @@
 """obstacle_avoidance controller."""
 
 from controller import Robot
+import numpy as np
 
 
 def enable_sensors(robot: Robot, timestep: int):
