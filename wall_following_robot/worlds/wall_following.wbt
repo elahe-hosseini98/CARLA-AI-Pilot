@@ -3,7 +3,6 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/samples/robotbenchmark/wall_following/protos/LinkedWalls.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
 
 WorldInfo {
@@ -15,32 +14,462 @@ WorldInfo {
   basicTimeStep 16
 }
 Viewpoint {
-  orientation 0.12422324359148729 -0.5507793696940361 -0.8253548762023828 5.508732769266357
-  position -16.67341984489542 -21.71864074057499 13.852110406718852
+  orientation 0.2258786585342704 0.7513697402181398 -0.6200180199827126 0.63920564035451
+  position -2.080189946978367 1.6266225377368047 4.183998232855336
 }
 TexturedBackgroundLight {
 }
 TexturedBackground {
 }
 RectangleArena {
-  translation 8.09 -16 0
+  translation 8 -16 0
   floorSize 10 36
   wallHeight 0.5
 }
-DEF WALL LinkedWalls {
-  translation 5 0 0.25
+DEF WALL Robot {
+  translation 5 0.2 0.25
   rotation 0 0 1 3.14157
-  appearance PBRAppearance {
-    baseColor 0.8 0.8 0.8
-    roughness 0.5
-    metalness 0
-    textureTransform TextureTransform {
-      scale 2 1
+  children [
+    Solid {
+      children [
+        DEF SHAPE_WALL_LINKED_WALL Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.8 0.8
+            roughness 0.5
+            metalness 0
+            textureTransform TextureTransform {
+              scale 2 1
+            }
+          }
+          geometry Box {
+            size 0.01 1 0.5
+          }
+        }
+      ]
+      boundingObject USE SHAPE_WALL_LINKED_WALL
     }
-  }
+    Solid {
+      translation 0 1 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 0"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation 0 2 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 1"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -0.12940952255126037 2.982962913144534 0
+      rotation 0 0 -1 -0.2617993877991494
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 2"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -0.3882285676537811 3.948888739433602 0
+      rotation 0 0 -1 -0.2617993877991494
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 3"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -0.5176380902050415 4.931851652578136 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 4"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -0.5176380902050415 5.931851652578136 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 5"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -0.6470476127563018 6.91481456572267 0
+      rotation 0 0 -1 -0.2617993877991494
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 6"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -0.7764571353075622 7.897777478867204 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 7"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -1.130010525900836 8.751330869460478 0
+      rotation 0 0 -1 -0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 8"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -1.7335639164941097 9.537896961945972 0
+      rotation 0 0 -1 -0.5235987755982988
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 9"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -1.9835639164941097 10.47090966383819 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 10"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.416576618386329 11.22090966383819 0
+      rotation 0 0 -1 -1.0471975511965976
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 11"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.416576618386329 11.72090966383819 0
+      rotation 0 0 -1 1.0471975511965976
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 12"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -1.9835639164941097 12.47090966383819 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 13"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.337117307087383 13.324463054431464 0
+      rotation 0 0 -1 -0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 14"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.940670697680657 14.111029146916957 0
+      rotation 0 0 -1 -0.5235987755982988
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 15"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.190670697680657 15.044041848809176 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 16"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.544224088273931 15.897595239402449 0
+      rotation 0 0 -1 -0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 17"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -4.330790180759424 16.501148629995722 0
+      rotation 0 0 -1 -1.0471975511965976
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 18"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -5.013802882651643 16.3181359281035 0
+      rotation 0 0 -1 -2.6179938779914944
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 19"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -5.696815584543863 16.13512322621128 0
+      rotation 0 0 -1 -1.0471975511965976
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 20"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -6.129828286436083 16.88512322621128 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 21"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -5.776274895842809 17.738676616804554 0
+      rotation 0 0 -1 0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 22"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -4.989708803357316 18.342230007397827 0
+      rotation 0 0 -1 1.0471975511965976
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 23"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -4.203142710871823 18.9457833979911 0
+      rotation 0 0 -1 0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 24"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.5995893202785494 19.732349490476594 0
+      rotation 0 0 -1 0.5235987755982988
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 25"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.3495893202785494 20.665362192368814 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 26"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.5995893202785494 21.598374894261035 0
+      rotation 0 0 -1 -0.5235987755982988
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 27"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.8495893202785494 22.531387596153255 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 28"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -4.099589320278549 23.464400298045476 0
+      rotation 0 0 -1 -0.5235987755982988
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 29"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.9960359296852754 24.25096639053097 0
+      rotation 0 0 -1 0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 30"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.6424825390920015 25.104519781124242 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 31"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.9960359296852754 25.958073171717515 0
+      rotation 0 0 -1 -0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 32"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.8495893202785494 26.31162656231079 0
+      rotation 0 0 -1 1.5707963267948966
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 33"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.9960359296852754 26.66517995290406 0
+      rotation 0 0 -1 0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 34"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.6424825390920015 27.518733343497335 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 35"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.9960359296852754 28.372286734090608 0
+      rotation 0 0 -1 -0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 36"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.8495893202785494 28.72584012468388 0
+      rotation 0 0 -1 -1.5707963267948966
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 37"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -4.349589320278549 29.22584012468388 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 38"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.9960359296852754 30.079393515277154 0
+      rotation 0 0 -1 0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 39"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -3.3924825390920015 29.99993420397821 0
+      rotation 0 0 -1 2.6179938779914944
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 40"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.7889291484987275 29.920474892679266 0
+      rotation 0 0 -1 0.7853981633974483
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 41"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -2.1853757579054536 30.70704098516476 0
+      rotation 0 0 -1 0.5235987755982988
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 42"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -1.8059662353541932 31.623016600201513 0
+      rotation 0 0 -1 0.2617993877991494
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 43"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+    Solid {
+      translation -1.6765567128029328 32.60597951334605 0
+      rotation 0 0 -1 0
+      children [
+        USE SHAPE_WALL_LINKED_WALL
+      ]
+      name "wall 44"
+      boundingObject USE SHAPE_WALL_LINKED_WALL
+    }
+  ]
+  customData "45,0,0,-2,0,2,0,-2,2,-6,2,4,-8,16,-8,-6,2,4,-6,-2,-12,12,8,6,2,-2,-2,-4,-4,4,-4,10,-6,-6,18,-6,-6,-6,-6,12,6,14,-14,-2,-2,-2,"
+  supervisor TRUE
+  window "wall_following"
 }
 E-puck {
-  translation 4.21405 0.330426 -3.19456e-05
-  rotation 0.0012509330234383447 6.8349e-06 0.9999992175594846 0
+  hidden position_0_0 16.766008757521956
+  hidden position_0_1 16.766008757527466
+  hidden linearVelocity_0 0.1252910376956955 3.732033426485102e-10 -4.924261986615803e-08
+  hidden angularVelocity_0 1.571997260783639e-08 -0.020597452280611075 2.0126012191566343e-09
+  hidden rotation_1 0 1 0 4.199638143162783
+  hidden linearVelocity_1 0.12518805087906695 2.9682107162767873e-10 3.285089311790626e-10
+  hidden angularVelocity_1 2.3675337904834922e-08 6.259402547716715 6.975854385948303e-08
+  hidden rotation_2 0 0.9999999999999999 0 4.199638143168293
+  hidden linearVelocity_2 0.12518805144368528 2.9238299233992646e-10 -4.618639026954559e-10
+  hidden angularVelocity_2 -5.3135611972841975e-08 6.259402547739281 -8.337315929188926e-08
+  translation 3.848495323629075 0.3304259999605655 -3.1981238399033524e-05
+  rotation -5.190118982349129e-06 0.9999999997999254 1.9318701859151798e-05 0.0002495016427621139
   controller "wall_following"
 }
