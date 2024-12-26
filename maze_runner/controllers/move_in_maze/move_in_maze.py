@@ -1,6 +1,4 @@
 from controller import Robot
-import time
-
 
 def start_engine(robot: Robot, max_speed: float):
     left_motor = robot.getDevice("motor.left")
