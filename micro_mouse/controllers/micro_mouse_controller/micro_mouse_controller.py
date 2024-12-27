@@ -1,32 +1,25 @@
-"""micro_mouse_controller controller."""
-
-# You may need to import some classes of the controller module. Ex:
-#  from controller import Robot, Motor, DistanceSensor
 from controller import Robot
+from epuck_utils import start_engine, enable_sensors, enable_camera, get_ir_sensors_values
+from velocity_adjustment import update_velocity_based_on_path
+import numpy as np
+import cv2
 
-# create the Robot instance.
-robot = Robot()
 
-# get the time step of the current world.
-timestep = int(robot.getBasicTimeStep())
+if __name__ == '__main__':
+    micro_mouse = Robot()
 
-# You should insert a getDevice-like function in order to get the
-# instance of a device of the robot. Something like:
-#  motor = robot.getDevice('motorname')
-#  ds = robot.getDevice('dsname')
-#  ds.enable(timestep)
+    MAX_SPEED = 6.28
 
-# Main loop:
-# - perform simulation steps until Webots is stopping the controller
-while robot.step(timestep) != -1:
-    # Read the sensors:
-    # Enter here functions to read sensor data, like:
-    #  val = ds.getValue()
+    timestep = int(micro_mouse.getBasicTimeStep())
 
-    # Process sensor data here.
+    left_motor, right_motor = start_engine(micro_mouse, MAX_SPEED)
+    camera = enable_camera(micro_mouse, timestep)
+    ir_sensors = enable_sensors(micro_mouse, timestep)
 
-    # Enter here functions to send actuator commands, like:
-    #  motor.setPosition(10.0)
-    pass
+    while micro_mouse.step(timestep) != -1:
+        ir_sensor_values = get_ir_sensors_values(ir_sensors)
+        print(ir_sensor_values)
 
-# Enter here exit cleanup code.
+        update_velocity_based_on_path(
+            micro_mouse,ir_sensor_values, timestep, MAX_SPEED
+        )
