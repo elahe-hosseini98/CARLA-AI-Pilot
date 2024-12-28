@@ -16,6 +16,13 @@ def start_engine(robot: Robot, max_speed: float):
     return left_motor, right_motor
 
 
+def stop_engine(robot: Robot):
+    left_motor = robot.getDevice('left wheel motor')
+    right_motor = robot.getDevice('right wheel motor')
+    left_motor.setVelocity(0)
+    right_motor.setVelocity(0)
+
+
 def enable_sensors(robot: Robot, timestep: int):
     ps = []
     ps_names = ['ps' + str(i) for i in range(8)]
@@ -68,16 +75,21 @@ def enable_camera(robot: Robot, timestep: int):
     return camera
 
 
+def get_image_from_camera(camera: Camera):
+    image_data = camera.getImage()
+
+    width = camera.getWidth()
+    height = camera.getHeight()
+
+    image_array = np.frombuffer(image_data, dtype=np.uint8).reshape((height, width, 4))
+    image_array = image_array[:, :, :3]
+
+    return image_array
+
+
 def display_camera(robot: Robot, camera: Camera, timestep: int):
     while robot.step(timestep) != -1:
-        image_data = camera.getImage()
-
-        width = camera.getWidth()
-        height = camera.getHeight()
-
-        image_array = np.frombuffer(image_data, dtype=np.uint8).reshape((height, width, 4))
-
-        image_array = image_array[:, :, :3]
+        image_array = get_image_from_camera(camera)
 
         cv2.imshow("e-puck Camera", image_array)
 
