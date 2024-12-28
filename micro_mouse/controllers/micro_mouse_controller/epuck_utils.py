@@ -28,6 +28,14 @@ def enable_sensors(robot: Robot, timestep: int):
     return ps
 
 
+def smooth_ir_sensor_data(sensor_values, previous_values, alpha=0.8):
+    """
+    Smooths noisy sensor values using an exponential moving average.
+    """
+
+    return [alpha * prev + (1 - alpha) * curr for prev, curr in zip(previous_values, sensor_values)]
+
+
 def normalize_ps_values(sensor_values):
     return [1000/sensor_value if sensor_value != 0 else sensor_value for sensor_value in sensor_values]
 
@@ -35,6 +43,22 @@ def normalize_ps_values(sensor_values):
 def get_ir_sensors_values(ir_sensors):
     ir_sensor_values = [sensor.getValue() for sensor in ir_sensors]
     return normalize_ps_values(ir_sensor_values)
+
+
+def enable_customized_distance_sensors(robot: Robot, timestep: int):
+    dist_sensors = []
+    dist_sensor_names = ['front', 'right', 'rear', 'left']
+
+    for name in dist_sensor_names:
+        sensor = robot.getDevice(name + ' distance sensor')
+        sensor.enable(timestep)
+        dist_sensors.append(sensor)
+
+    return dist_sensors
+
+
+def get_customized_distance_sensors_values(dist_sensors):
+    return [sensor.getValue() for sensor in dist_sensors]
 
 
 def enable_camera(robot: Robot, timestep: int):
