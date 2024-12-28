@@ -1,8 +1,9 @@
 from controller import Robot
-from epuck_utils import start_engine, enable_sensors, enable_camera, get_ir_sensors_values
+from epuck_utils import (start_engine, enable_camera,
+                         enable_customized_distance_sensors,
+                         get_customized_distance_sensors_values
+                         )
 from velocity_adjustment import update_velocity_based_on_path
-import numpy as np
-import cv2
 
 
 if __name__ == '__main__':
@@ -14,12 +15,13 @@ if __name__ == '__main__':
 
     left_motor, right_motor = start_engine(micro_mouse, MAX_SPEED)
     camera = enable_camera(micro_mouse, timestep)
-    ir_sensors = enable_sensors(micro_mouse, timestep)
+    dist_sensors = enable_customized_distance_sensors(micro_mouse, timestep)
 
     while micro_mouse.step(timestep) != -1:
-        ir_sensor_values = get_ir_sensors_values(ir_sensors)
-        print(ir_sensor_values)
+        dist_sensor_values = get_customized_distance_sensors_values(dist_sensors)
+
+        print(dist_sensor_values)
 
         update_velocity_based_on_path(
-            micro_mouse,ir_sensor_values, timestep, MAX_SPEED
+            micro_mouse,dist_sensor_values, timestep, MAX_SPEED
         )
