@@ -10,8 +10,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.1016306784780411 0.9787940436815837 0.1778578793462549 1.056865544868478
-  position -3.2712849943648576 -0.3837679616720214 5.853281100309845
+  orientation -0.009084434566792319 0.9997715568789274 0.01934701797403424 0.8784750352192402
+  position -4.712364865837923 0.3454407176888139 4.98144876735774
 }
 TexturedBackground {
 }
@@ -26,8 +26,75 @@ RectangleArena {
     }
   }
 }
-E-puck {
-  translation -1.51 1.51 0
+DEF epuck E-puck {
+  translation -1.54008 1.51917 -0.000182791
+  rotation 0.9990443696764228 2.1161707830467483e-05 -0.04370751617309373 -8.530717958610268e-05
+  controller "micro_mouse_controller"
+  supervisor TRUE
+  turretSlot [
+    Lidar {
+      translation 0.01 0 0.01
+      rotation 0 0 1 3.1415
+      horizontalResolution 360
+      fieldOfView 6.28319
+      numberOfLayers 1
+      minRange 0.04
+      noise 0.01
+    }
+    DEF Front DistanceSensor {
+      translation 0.037 0 0
+      name "front distance sensor"
+      lookupTable [
+        0 0 0
+        1 1 0.1
+      ]
+    }
+    DEF Right DistanceSensor {
+      translation 0 -0.037 0
+      rotation 0 0 1 -1.5708
+      name "right distance sensor"
+      lookupTable [
+        0 0 0
+        1 1 0.1
+      ]
+    }
+    DEF Rear DistanceSensor {
+      translation -0.037 0 0
+      rotation 0 0 1 3.1415
+      name "rear distance sensor"
+      lookupTable [
+        0 0 0
+        1 1 0.1
+      ]
+    }
+    DEF Left DistanceSensor {
+      translation 0 0.037 0
+      rotation 0 0 1 1.5708
+      name "left distance sensor"
+      recognitionColors [
+        0 0 0
+      ]
+      lookupTable [
+        0 0 0
+        1 1 0.1
+      ]
+    }
+    InertialUnit {
+      rotation -1 0 0 0
+    }
+    Camera {
+      translation 0.037 0 0
+      name "camera1"
+      recognitionColors [
+        1 1 0
+      ]
+      fieldOfView 1.57
+      width 80
+      height 80
+      recognition Recognition {
+      }
+    }
+  ]
 }
 Wall {
   translation 1.6 1.5 0
