@@ -66,7 +66,8 @@ o   o   o   o   o   o   o   o   o   o   o   o   o   o   o   o   o
 o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o
 ```
 Example of a generated maze:  
-![img.png](img.png)
+![image](https://github.com/user-attachments/assets/6c63d06e-92a2-4f30-8b51-09a8e86d4cd0)
+
 
 ---
 
