@@ -6,7 +6,7 @@ Welcome to my robotics projects repository! This is a collection of projects I'v
 Feel free to explore the repository and its projects. Each project folder contains more details, including implementation and code structure. **Contributions and feedback are always welcome!**
 
 
-Below is a brief overview of each project.
+Below is a brief overview of each project:
 
 ---
 
