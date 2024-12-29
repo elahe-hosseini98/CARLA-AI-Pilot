@@ -1,6 +1,12 @@
 # Webots AI Controller
 
-Welcome to my robotics projects repository! This is a collection of projects I've developed and continue to expand, primarily using Webots simulation. Below is a brief overview of each project.
+Welcome to my robotics projects repository! This is a collection of projects I've developed and continue to expand, primarily using Webots simulation. 
+
+
+Feel free to explore the repository and its projects. Each project folder contains more details, including implementation and code structure. **Contributions and feedback are always welcome!**
+
+
+Below is a brief overview of each project.
 
 ---
 
@@ -66,9 +72,5 @@ o   o   o   o   o   o   o   o   o   o   o   o   o   o   o   o   o
 o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o---o
 ```
 Example of a generated maze:  
-![image](https://github.com/user-attachments/assets/6c63d06e-92a2-4f30-8b51-09a8e86d4cd0)
+![img.png](img.png)
 
-
----
-
-Feel free to explore the repository and its projects. Each project folder contains more details, including implementation and code structure. Contributions and feedback are always welcome!
