@@ -11,19 +11,11 @@ import numpy as np
 def check_maze_solved(robot: Robot, camera: Camera):
     image = get_image_from_camera(camera)
 
-    total_pixels = image.shape[0] * image.shape[1]
+    average_values = [np.mean(image[:, :, channel]) for channel in range(3)]
 
-    # Count the number of red-ish pixels (Red > Green and Blue)
-    redish_pixels = np.sum(image[:, :, 0] > (image[:, :, 1] + image[:, :, 2]))
-
-    # Calculate the ratio of red-ish pixels
-    red_ratio = redish_pixels / total_pixels
-
-    print('red_ratio =', red_ratio)
-
-    if red_ratio > 0.9:
+    if average_values[0] < 40:
         stop_engine(robot)
-        return True # Return True if more than 50% of the image is red-ish
+        return True
 
     return False
 
