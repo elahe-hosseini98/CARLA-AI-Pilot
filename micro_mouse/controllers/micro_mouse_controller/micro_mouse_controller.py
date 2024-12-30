@@ -8,12 +8,12 @@ from velocity_adjustment import update_velocity_based_on_path
 import numpy as np
 
 
-def check_maze_solved(robot: Robot, camera: Camera):
+def check_maze_solved(robot: Robot, camera: Camera, redness_threshold=40):
     image = get_image_from_camera(camera)
 
     average_values = [np.mean(image[:, :, channel]) for channel in range(3)]
 
-    if average_values[0] < 40:
+    if average_values[0] < redness_threshold:
         stop_engine(robot)
         return True
 
