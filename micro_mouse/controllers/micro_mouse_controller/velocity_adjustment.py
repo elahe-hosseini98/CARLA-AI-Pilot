@@ -10,7 +10,7 @@ def keep_go_straight(robot, left_motor, right_motor, timestep, max_speed, turn_d
 
 
 def sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration):
-    print('Sharp turning to left')
+    #print('Sharp turning to left')
 
     left_motor.setVelocity(-max_speed)
     right_motor.setVelocity(max_speed)
@@ -25,7 +25,7 @@ def sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_du
 
 
 def sharp_right_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration):
-    print('Sharp turning to right')
+    #print('Sharp turning to right')
 
     left_motor.setVelocity(max_speed)
     right_motor.setVelocity(-max_speed)
@@ -54,26 +54,28 @@ def smooth_right_turn(left_motor, right_motor, max_speed):
 
 
 def go_straight(robot, left_motor, right_motor, timestep, max_speed):
-    print('go straight')
+    #print('go straight')
     left_motor.setVelocity(max_speed)
     right_motor.setVelocity(max_speed)
 
     keep_go_straight(robot, left_motor, right_motor, timestep, max_speed, turn_duration=0.2)
 
 
-def update_velocity_based_on_path(robot, ir_sensor_values, timestep, max_speed):
+def update_velocity_based_on_path(robot, sensor_values, timestep, max_speed):
     turn_duration = 1.63
 
     left_motor = robot.getDevice('left wheel motor')
     right_motor = robot.getDevice('right wheel motor')
 
-    direction = navigate_with_custom_dist_sensor(ir_sensor_values) # 0: straight, 1: right, -1: left
+    direction = navigate_with_custom_dist_sensor(sensor_values) # 0: straight, 1: right, -1: left
 
     if direction == 0: # go straight
-        return go_straight(robot, left_motor, right_motor, timestep, max_speed)
+         go_straight(robot, left_motor, right_motor, timestep, max_speed)
 
     elif direction == 1: # turn right
-        return sharp_right_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
+         sharp_right_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
 
     else: # turn left
-        return sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
+         sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
+
+    return direction
