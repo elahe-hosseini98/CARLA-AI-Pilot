@@ -1,4 +1,4 @@
-from pathfindings.right_hand_path import navigate_with_ir, navigate_with_custom_dist_sensor
+from pathfindings.right_hand_path import navigate_with_custom_dist_sensor
 
 
 def keep_go_straight(robot, left_motor, right_motor, timestep, max_speed, turn_duration=0.4):
@@ -10,7 +10,7 @@ def keep_go_straight(robot, left_motor, right_motor, timestep, max_speed, turn_d
 
 
 def sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration):
-    #print('Sharp turning to left')
+    print('Sharp turning to left')
 
     left_motor.setVelocity(-max_speed)
     right_motor.setVelocity(max_speed)
@@ -25,7 +25,7 @@ def sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_du
 
 
 def sharp_right_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration):
-    #print('Sharp turning to right')
+    print('Sharp turning to right')
 
     left_motor.setVelocity(max_speed)
     right_motor.setVelocity(-max_speed)
@@ -39,22 +39,8 @@ def sharp_right_turn(robot, left_motor, right_motor, timestep, max_speed, turn_d
     right_motor.setVelocity(max_speed)
 
 
-def smooth_left_turn(left_motor, right_motor, max_speed):
-    print('Smooth turning to left')
-
-    left_motor.setVelocity(-max_speed)
-    right_motor.setVelocity(max_speed)
-
-
-def smooth_right_turn(left_motor, right_motor, max_speed):
-    print('Smooth turning to right')
-
-    left_motor.setVelocity(max_speed)
-    right_motor.setVelocity(-max_speed)
-
-
 def go_straight(robot, left_motor, right_motor, timestep, max_speed):
-    #print('go straight')
+    print('go straight')
     left_motor.setVelocity(max_speed)
     right_motor.setVelocity(max_speed)
 
