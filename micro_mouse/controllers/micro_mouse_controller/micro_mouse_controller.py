@@ -39,8 +39,6 @@ if __name__ == '__main__':
             micro_mouse,dist_sensor_values, timestep, MAX_SPEED
         )
 
-        #add_timestep_details_2_excel(micro_mouse, dist_sensor_values)
-
         if check_maze_solved(micro_mouse, camera):
             print("Congrats! You solved the maze!")
             break
