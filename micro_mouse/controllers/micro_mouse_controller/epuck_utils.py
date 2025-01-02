@@ -97,3 +97,13 @@ def display_camera(robot: Robot, camera: Camera, timestep: int):
             break
 
     cv2.destroyAllWindows()
+
+
+def read_robot_rotation(robot: Robot):
+    inertial_unit = robot.getDevice("inertial unit")
+    inertial_unit.enable(int(robot.getBasicTimeStep()))
+
+    rotation = inertial_unit.getRollPitchYaw()
+
+    _, _, yaw = rotation
+    return yaw
