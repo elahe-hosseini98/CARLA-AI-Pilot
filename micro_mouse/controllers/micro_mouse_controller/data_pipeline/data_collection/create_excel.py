@@ -1,18 +1,9 @@
 from sklearn.utils import resample
+from epuck_utils import read_robot_rotation
 from controller import Robot
 from pathlib import Path
 import pandas as pd
 import os
-
-
-def read_robot_rotation(robot: Robot):
-    inertial_unit = robot.getDevice("inertial unit")
-    inertial_unit.enable(int(robot.getBasicTimeStep()))
-
-    rotation = inertial_unit.getRollPitchYaw()
-
-    _, _, yaw = rotation
-    return yaw
 
 
 def add_timestep_details_2_excel(robot: Robot, dist_sensors):
