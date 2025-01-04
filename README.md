@@ -75,3 +75,8 @@ Example of a generated maze:
 ![image](https://github.com/user-attachments/assets/49aa2a81-5dbe-440d-9d4f-669f0e41026e)
 
 
+https://github.com/user-attachments/assets/2bc5ba19-d46e-4c33-9f89-5ffa444403c9
+
+
+
+
