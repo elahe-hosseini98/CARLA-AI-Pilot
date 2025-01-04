@@ -5,7 +5,6 @@ from epuck_utils import (start_engine, enable_camera,
                          get_image_from_camera, stop_engine
                          )
 from velocity_adjustment import update_velocity_based_on_path
-from data_pipeline.data_collection.create_excel import add_timestep_details_2_excel
 import numpy as np
 
 
@@ -32,12 +31,16 @@ if __name__ == '__main__':
     camera = enable_camera(micro_mouse, timestep)
     dist_sensors = enable_customized_distance_sensors(micro_mouse, timestep)
 
+    micro_mouse_prev_dir = 0 # always start with 0 no matter what maze it's solving!
+
     while micro_mouse.step(timestep) != -1:
         dist_sensor_values = get_customized_distance_sensors_values(dist_sensors)
 
-        update_velocity_based_on_path(
-            micro_mouse,dist_sensor_values, timestep, MAX_SPEED
+        _, micro_mouse_prev_dir = update_velocity_based_on_path(
+            micro_mouse,dist_sensor_values, timestep, MAX_SPEED, micro_mouse_prev_dir
         )
+
+        print(f"dist_sensor_values = {dist_sensor_values}")
 
         if check_maze_solved(micro_mouse, camera):
             print("Congrats! You solved the maze!")
