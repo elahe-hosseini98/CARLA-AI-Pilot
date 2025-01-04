@@ -1,4 +1,5 @@
 from pathfindings.right_hand_path import navigate_with_custom_dist_sensor
+from epuck_utils import read_robot_rotation
 
 
 def keep_go_straight(robot, left_motor, right_motor, timestep, max_speed, turn_duration=0.4):
@@ -47,13 +48,19 @@ def go_straight(robot, left_motor, right_motor, timestep, max_speed):
     keep_go_straight(robot, left_motor, right_motor, timestep, max_speed, turn_duration=0.2)
 
 
-def update_velocity_based_on_path(robot, sensor_values, timestep, max_speed):
+def turn_over(robot, left_motor, right_motor, timestep, max_speed, turn_duration):
+    print('turn over')
+    sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration*2)
+    keep_go_straight(robot, left_motor, right_motor, timestep, max_speed)
+
+
+def update_velocity_based_on_path(robot, sensor_values, timestep, max_speed, prev_dir):
     turn_duration = 1.63
 
     left_motor = robot.getDevice('left wheel motor')
     right_motor = robot.getDevice('right wheel motor')
 
-    direction = navigate_with_custom_dist_sensor(sensor_values) # 0: straight, 1: right, -1: left
+    direction = navigate_with_custom_dist_sensor(sensor_values, prev_dir=prev_dir) # 0: straight, 1: right, -1: left, 2: turn-over
 
     if direction == 0: # go straight
          go_straight(robot, left_motor, right_motor, timestep, max_speed)
@@ -61,7 +68,12 @@ def update_velocity_based_on_path(robot, sensor_values, timestep, max_speed):
     elif direction == 1: # turn right
          sharp_right_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
 
-    else: # turn left
+    elif direction == -1: # turn left
          sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
 
-    return direction
+    else: # turn over
+        turn_over(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
+
+    prev_dir = direction
+
+    return direction, prev_dir
