@@ -60,18 +60,18 @@ def update_velocity_based_on_path(robot, sensor_values, timestep, max_speed, pre
     left_motor = robot.getDevice('left wheel motor')
     right_motor = robot.getDevice('right wheel motor')
 
-    direction = navigate_with_custom_dist_sensor(sensor_values, prev_dir=prev_dir) # 0: straight, 1: right, -1: left, 2: turn-over
+    direction = navigate_with_custom_dist_sensor(sensor_values, prev_dir=prev_dir)
 
-    if direction == Direction.STRAIGHT: # go straight
+    if direction == Direction.STRAIGHT:
          go_straight(robot, left_motor, right_motor, timestep, max_speed)
 
-    elif direction == Direction.RIGHT: # turn right
+    elif direction == Direction.RIGHT:
          sharp_right_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
 
-    elif direction == Direction.LEFT: # turn left
+    elif direction == Direction.LEFT:
          sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
 
-    else: # turn over
+    else:
         turn_over(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
 
     prev_dir = direction
