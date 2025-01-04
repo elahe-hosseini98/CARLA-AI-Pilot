@@ -1,4 +1,4 @@
-from ..constants import Direction
+from constants import Direction
 
 
 def navigate_with_custom_dist_sensor(dist_sensors, prev_dir):
@@ -8,7 +8,7 @@ def navigate_with_custom_dist_sensor(dist_sensors, prev_dir):
     left_side = dist_sensors[3]
 
 
-    if prev_dir == 1:
+    if prev_dir == Direction.RIGHT:
         return Direction.STRAIGHT
 
     if right_side < 0.1 and left_side < 0.1 and front_side > 0.07:

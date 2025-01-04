@@ -6,6 +6,7 @@ from epuck_utils import (start_engine, enable_camera,
                          )
 from velocity_adjustment import update_velocity_based_on_path
 import numpy as np
+from constants import Direction
 
 
 def check_maze_solved(robot: Robot, camera: Camera, redness_threshold=40):
@@ -31,7 +32,7 @@ if __name__ == '__main__':
     camera = enable_camera(micro_mouse, timestep)
     dist_sensors = enable_customized_distance_sensors(micro_mouse, timestep)
 
-    micro_mouse_prev_dir = 0 # always start with 0 no matter what maze it's solving!
+    micro_mouse_prev_dir = Direction.STRAIGHT # always start with going straight no matter what maze it's solving!
 
     while micro_mouse.step(timestep) != -1:
         dist_sensor_values = get_customized_distance_sensors_values(dist_sensors)
