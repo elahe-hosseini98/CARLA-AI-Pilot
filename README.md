@@ -77,6 +77,7 @@ Example of a generated maze:
 #### Different maze-solving algorithms:
 
 1- Right-hand Wall-following
+
 https://github.com/user-attachments/assets/2bc5ba19-d46e-4c33-9f89-5ffa444403c9
 
 
