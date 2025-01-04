@@ -1,5 +1,5 @@
 from pathfindings.right_hand_path import navigate_with_custom_dist_sensor
-from epuck_utils import read_robot_rotation
+from constants import Direction
 
 
 def keep_go_straight(robot, left_motor, right_motor, timestep, max_speed, turn_duration=0.4):
@@ -62,13 +62,13 @@ def update_velocity_based_on_path(robot, sensor_values, timestep, max_speed, pre
 
     direction = navigate_with_custom_dist_sensor(sensor_values, prev_dir=prev_dir) # 0: straight, 1: right, -1: left, 2: turn-over
 
-    if direction == 0: # go straight
+    if direction == Direction.STRAIGHT: # go straight
          go_straight(robot, left_motor, right_motor, timestep, max_speed)
 
-    elif direction == 1: # turn right
+    elif direction == Direction.RIGHT: # turn right
          sharp_right_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
 
-    elif direction == -1: # turn left
+    elif direction == Direction.LEFT: # turn left
          sharp_left_turn(robot, left_motor, right_motor, timestep, max_speed, turn_duration)
 
     else: # turn over
