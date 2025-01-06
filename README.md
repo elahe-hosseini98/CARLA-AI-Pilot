@@ -15,6 +15,11 @@ Below is a brief overview of each project:
 ### 1. Line Follower
 A basic implementation of a line-following robot using an e-puck. It utilizes IR sensors to detect lines and adjust motor speeds to stay on track.
 
+
+https://github.com/user-attachments/assets/61a6032e-e2ad-4a3f-9fb7-0cc6002a3a9d
+
+
+
 ---
 
 ### 2. Obstacle Avoidance
