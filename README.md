@@ -34,6 +34,10 @@ https://github.com/user-attachments/assets/4959dbcb-d767-4b54-b6ed-c895e3947e67
 ### 3. Wall Following
 Implements a wall-following algorithm using proximity sensors to maintain a consistent distance from walls. This project also explores reinforcement learning for improving the robot's wall-following behavior, though the RL implementation is currently under development.
 
+
+https://github.com/user-attachments/assets/0d1d4eb7-89ac-471c-bcdd-0c2cbba330ad
+
+
 ---
 
 ### 4. Maze Runner
