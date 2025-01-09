@@ -54,7 +54,7 @@ def get_ground_sensors_values(ground_sensors):
 
 
 def update_velocity(left_motor, right_motor, timestep, max_speed: float, turn_left=False, turn_right=False, game_end=False):
-    turn_duration = 0.47
+    turn_duration = 0.46
 
     def _sharp_left_turn():
         print("shift it shift it to the left!")
@@ -93,13 +93,22 @@ def update_velocity(left_motor, right_motor, timestep, max_speed: float, turn_le
     return left_motor, right_motor
 
 
-def detect_maze_path(distance_values):
+def check_maze_progress(count_dots_on_ground, ground_dist_values, prev_ground_dist_values):
+    if ground_dist_values[1] > 8 and prev_ground_dist_values[1] < 3:
+        return count_dots_on_ground + 1
+    return count_dots_on_ground
+
+
+def detect_maze_path(distance_values, count_dots_on_ground, num_dots_on_ground):
     turn_left = False
     turn_right = False
     game_end = False
 
     if all(0 < value < 0.3 for value in distance_values[1:-1]):
         turn_right = True
+
+    if count_dots_on_ground == num_dots_on_ground:
+        game_end = True
 
     return turn_left, turn_right, game_end
 
@@ -118,11 +127,23 @@ if __name__ == '__main__':
     activated_distance_sensors = active_distance_sensors(robot, timeStep)
     activated_ground_sensors = active_ground_sensors(robot, timeStep)
 
+    count_dots_on_ground = 0
+    num_dots_on_ground = 5 # Based on maze
+
+    ground_dist_values = get_ground_sensors_values(activated_ground_sensors)
+
     while robot.step(timeStep) != -1:
         distance_values = get_distance_sensors_values(activated_distance_sensors)
-        print(distance_values)
 
-        turn_left, turn_right, game_end = detect_maze_path(distance_values)
+        prev_ground_dist_values = ground_dist_values
+        ground_dist_values = get_ground_sensors_values(activated_ground_sensors)
+
+        count_dots_on_ground = check_maze_progress(count_dots_on_ground, ground_dist_values, prev_ground_dist_values)
+
+        print(ground_dist_values)
+        print(f'Maze Progress: {count_dots_on_ground}/{num_dots_on_ground}')
+
+        turn_left, turn_right, game_end = detect_maze_path(distance_values, count_dots_on_ground, num_dots_on_ground)
 
         left_motor, right_motor = update_velocity(left_motor, right_motor, timeStep, max_speed, turn_left, turn_right, game_end)
 
