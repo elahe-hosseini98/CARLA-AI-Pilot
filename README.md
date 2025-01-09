@@ -15,15 +15,28 @@ Below is a brief overview of each project:
 ### 1. Line Follower
 A basic implementation of a line-following robot using an e-puck. It utilizes IR sensors to detect lines and adjust motor speeds to stay on track.
 
+
+https://github.com/user-attachments/assets/61a6032e-e2ad-4a3f-9fb7-0cc6002a3a9d
+
+
+
 ---
 
 ### 2. Obstacle Avoidance
 This robot detects obstacles using distance sensors and a camera. It adjusts its movement dynamically to avoid collisions, demonstrating basic navigation principles.
 
+
+https://github.com/user-attachments/assets/4959dbcb-d767-4b54-b6ed-c895e3947e67
+
+
 ---
 
 ### 3. Wall Following
 Implements a wall-following algorithm using proximity sensors to maintain a consistent distance from walls. This project also explores reinforcement learning for improving the robot's wall-following behavior, though the RL implementation is currently under development.
+
+
+https://github.com/user-attachments/assets/0d1d4eb7-89ac-471c-bcdd-0c2cbba330ad
+
 
 ---
 
