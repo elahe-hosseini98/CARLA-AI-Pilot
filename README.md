@@ -43,6 +43,8 @@ https://github.com/user-attachments/assets/0d1d4eb7-89ac-471c-bcdd-0c2cbba330ad
 ### 4. Maze Runner
 A robot designed to solve mazes using basic decision-making logic. It incorporates distance and ground sensors for path detection and navigation within maze structures.
 
+https://github.com/user-attachments/assets/3d6f1fa1-71fd-4f2b-bb78-be9d3ca1a36b
+
 ---
 
 ### 5. Micro-Mouse
