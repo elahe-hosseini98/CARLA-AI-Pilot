@@ -1,4 +1,4 @@
-# Webots AI Controller
+# Webots Controller
 
 Welcome to my robotics projects repository! This is a collection of projects I've developed and continue to expand, primarily using Webots simulation. 
 
